@@ -105,6 +105,9 @@ def run_test_harness():
     model = define_model()
     # fit the model on the train dataset using the fit method with 10 epochs (number of iterations over the entire dataset), batch size of 32 (number of samples per gradient update) and verbose set to 1 (progress messages or 0 for not)
     model.fit(trainX, trainY, epochs=10, batch_size=32, verbose=1)
+    # evaluate model
+    _, acc = model.evaluate(testX, testY, verbose=1)
+    print('evaluate result > %.3f' % (acc * 100.0))
     # save the model to a file using the save method and passing the model file name as argument
     model.save(model_file_name)
 
